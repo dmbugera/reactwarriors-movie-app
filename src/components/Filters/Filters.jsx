@@ -1,28 +1,39 @@
 import React from "react";
+import SortBy from './SortBy'
+import PrimaryReleaseYear from './PrimaryReleaseYear'
+import Pagination from './Pagination'
+import Genres from './Genres'
 
 export default class Filters extends React.Component {
-  render() {
-    const {
-      filters: {sort_by},
-        onChangeFilters
-    } = this.props;
-    return (
-      <form className="mb-3">
-        <div className="form-group">
-          <label htmlFor="sort_by">Сортировать по:</label>
-          <select
-              id="sort_by"
-              className="form-control"
-              value={sort_by}
-              name="sort_by"
-              onChange={onChangeFilters}>
-            <option value="popularity.desc">Популярные по убыванию</option>
-            <option value="popularity.asc">Популярные по возростанию</option>
-            <option value="vote_average.desc">Рейтинг по убыванию</option>
-            <option value="vote_average.asc">Рейтинг по возростанию</option>
-          </select>
-        </div>
-      </form>
-    );
-  }
+    render() {
+        const {
+            filters: {sort_by, primary_release_year, with_genres},
+            page,
+            onChangeFilters,
+            onChangePage,
+            totalPages,
+            onChangeGenres
+        } = this.props;
+        return (
+            <form className="mb-3">
+                <SortBy
+                    sort_by={sort_by}
+                    onChangeFilters={onChangeFilters}
+                />
+                <PrimaryReleaseYear
+                    primary_release_year={primary_release_year}
+                    onChangeFilters={onChangeFilters}
+                />
+                <Genres
+                    with_genres={with_genres}
+                    onChangeGenres={onChangeGenres}
+                />
+                <Pagination
+                    page={page}
+                    onChangePage={onChangePage}
+                    totalPages={totalPages}
+                />
+            </form>
+        );
+    }
 }
