@@ -1,6 +1,7 @@
 import React from "react";
 import Filters from "./Filters/Filters";
 import MoviesList from "./Movies/MoviesList";
+import Header from "./Header/Header";
 
 export default class App extends React.Component {
     constructor() {
@@ -68,6 +69,8 @@ export default class App extends React.Component {
         // console.log(this.state.filters.with_genres);
         const {filters, page, totalPages} =this.state;
         return (
+            <div>
+            <Header />
             <div className="container">
                 <div className="row mt-4">
                     <div className="col-4">
@@ -103,6 +106,7 @@ export default class App extends React.Component {
                         />
                     </div>
                 </div>
+            </div>
             </div>
         );
     }
