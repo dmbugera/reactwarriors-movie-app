@@ -1,9 +1,8 @@
 import React from 'react'
 import {API_URL, API_KEY_3} from "../../api/api";
 import PropTypes from 'prop-types'
-import Genres from './Containers/Genres'
 
-export default class GenresContainer extends React.Component{
+export default Component => class GenresHOC extends React.Component{
 
     // static propTypes = {
     //     with_genres: PropTypes.string.isRequird,
@@ -40,7 +39,7 @@ export default class GenresContainer extends React.Component{
             with_genres
         } = this.props;
         return (
-            <Genres
+            <Component
                 genres = {this.state.genres}
                 with_genres = {with_genres}
                 onChangeGenres = {onChangeGenres}
