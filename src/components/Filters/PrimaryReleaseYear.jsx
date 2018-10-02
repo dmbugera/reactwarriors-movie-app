@@ -54,7 +54,6 @@ export default class PrimaryReleaseYear extends React.PureComponent {
 
     render () {
         const {primary_release_year ,options, onChangeFilters} = this.props;
-        console.log('primary_release_year render');
         return (
         <UISelect
             name="primary_release_year"

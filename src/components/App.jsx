@@ -7,6 +7,8 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
+export const AppContext = React.createContext();
+console.log(AppContext);
 export default class App extends React.Component {
     constructor() {
         super();
@@ -101,12 +103,14 @@ export default class App extends React.Component {
         // console.log(this.state.filters.with_genres);
         const {filters, page, totalPages, user} =this.state;
         return (
+        <AppContext.Provider value={{
+            user: user,
+            updateUser: this.updateUser,
+            updateSessionId: this.updateSessionId
+
+        }}>
             <div>
-            <Header
-                user={user}
-                updateUser={this.updateUser}
-                updateSessionId={this.updateSessionId}
-            />
+            <Header user={user}/>
             <div className="container">
                 <div className="row mt-4">
                     <div className="col-4">
@@ -144,6 +148,7 @@ export default class App extends React.Component {
                 </div>
             </div>
             </div>
+        </AppContext.Provider>
         );
     }
-}
+};

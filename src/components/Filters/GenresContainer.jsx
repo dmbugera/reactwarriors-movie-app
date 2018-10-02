@@ -1,8 +1,9 @@
 import React from 'react'
 import {API_URL, API_KEY_3} from "../../api/api";
 import PropTypes from 'prop-types'
+import GenresList from './Containers/GenresList'
 
-export default class Genres extends React.Component{
+export default class GenresContainer extends React.Component{
 
     // static propTypes = {
     //     with_genres: PropTypes.string.isRequird,
@@ -39,18 +40,11 @@ export default class Genres extends React.Component{
             with_genres
         } = this.props;
         return (
-            <div>
-                <label htmlFor="sort_by">Жанр:</label>
-                {this.state.genres.map(genre => {
-                return (
-                    <div className="form-group form-check">
-                        <input type="checkbox" className="form-check-input" id={genre.id} value={genre.id} checked={with_genres.includes(String(genre.id))} key={genre.id} onChange={onChangeGenres}/>
-                        <label className="form-check-label" htmlFor={genre.id}>{genre.name}</label>
-                    </div>
-                )
-            })}
-            </div>
-
+            <GenresList
+                genres = {this.state.genres}
+                with_genres = {with_genres}
+                onChangeGenres = {onChangeGenres}
+            />
         )
     }
 

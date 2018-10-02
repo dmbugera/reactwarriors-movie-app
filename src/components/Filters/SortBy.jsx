@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import UISelect from '../UIComponents/UISelect'
 
 export default class SortBy extends React.Component {
