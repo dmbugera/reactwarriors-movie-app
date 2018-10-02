@@ -38,11 +38,20 @@ export default class App extends React.Component {
         cookies.set('session_id', session_id, {
             path: '/',
             maxAge: '2592000'
-        })
+        });
         this.setState({
             session_id
         })
-    }
+    };
+
+    onLogOut = () => {
+        cookies.remove('session_id');
+        this.setState ({
+            user: null,
+            session_id: null
+        })
+    };
+
 
     onChangeFilters = event => {
         const newFilters = {
@@ -92,6 +101,7 @@ export default class App extends React.Component {
                 `${API_URL}/account?api_key=${API_KEY_3}&session_id=${session_id}`
             ).then(user => {
                 this.updateUser(user);
+                this.updateSessionId(session_id)
             })
         }
 
@@ -106,8 +116,9 @@ export default class App extends React.Component {
         <AppContext.Provider value={{
             user: user,
             updateUser: this.updateUser,
-            updateSessionId: this.updateSessionId
-
+            updateSessionId: this.updateSessionId,
+            session_id: this.state.session_id,
+            onLogOut: this.onLogOut
         }}>
             <div>
             <Header user={user}/>
