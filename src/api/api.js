@@ -1,3 +1,5 @@
+import queryString from "query-string";
+
 export const API_URL = "https://api.themoviedb.org/3";
 
 export const API_KEY_3 = "520490b0955440b671992c969bf394e5";
@@ -26,3 +28,60 @@ export const fetchApi = (url, options = {}) => {
             });
     });
 };
+
+export default class CallAPI {
+    static get (url, options = {}) { //??? static
+        const { params = {} } = options;
+        const queryStringParams = {
+            api_key: API_KEY_3,
+            ...params // ??
+            // language: 'ru-RU',
+            // sort_by: sort_by,
+            // page: page,
+            // primary_release_year: primary_release_year,
+            // with_genres: with_genres.join(",")
+            // [] => "" , [1] => 1, [1, 2] => 1,2  ??
+
+        };
+
+        // url = '/discover/movie'
+        // params = {}
+        return fetchApi(`${API_URL}${url}?${queryString.stringify(queryStringParams)}`,
+            {
+            mode: "cors",
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+    }
+    static post(url, options = {}){
+        const {params = {}, body ={}} = options;
+        const queryStringParams = {
+            api_key: API_KEY_3,
+            ...params
+        };
+        return fetchApi(`${API_URL}${url}?${queryString.stringify(queryStringParams)}`,
+            {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(body)
+            })
+    }
+    // static delete(url, options = {}){
+    //     const {params = {}, body ={}} = options;
+    //
+    //     return fetchApi(`${API_URL}/authentication/session?api_key=${API_KEY_3}`, {
+    //         method: 'DELETE',
+    //         mode: 'cors',
+    //         headers: {
+    //             'Content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify({
+    //             session_id: this.props.session_id
+    //         })
+    //     })
+    // }
+}
