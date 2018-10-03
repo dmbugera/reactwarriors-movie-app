@@ -7,6 +7,7 @@ import {
 } from 'reactstrap'
 import {AppContext} from '../App'
 import {fetchApi, API_URL, API_KEY_3} from '../../api/api'
+import AppContextHOC from '../HOC/AppContextHOC'
 
 class UserMenu extends React.Component {
     state = {
@@ -62,17 +63,6 @@ class UserMenu extends React.Component {
     }
 }
 
-const UserMenuContainer = props => {
-    return <AppContext.Consumer>
-        {(context) => {
-            return <UserMenu
-                {...context}
-                {...props}
-            />
-        }}
-    </AppContext.Consumer>
-};
 
-UserMenuContainer.displayName = 'UserContainer'; //????
 
-export default UserMenuContainer
+export default AppContextHOC(UserMenu);
