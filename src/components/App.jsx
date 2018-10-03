@@ -4,6 +4,9 @@ import MoviesList from "./Movies/MoviesList";
 import Header from "./Header/Header";
 import {API_KEY_3, API_URL, fetchApi} from '../api/api' // Почему {} ??
 import Cookies from 'universal-cookie';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 
 const cookies = new Cookies();
 
