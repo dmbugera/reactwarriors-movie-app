@@ -8,6 +8,7 @@ import {
 import {AppContext} from '../App'
 import {fetchApi, API_URL, API_KEY_3} from '../../api/api'
 import AppContextHOC from '../HOC/AppContextHOC'
+import {Link} from 'react-router-dom'
 
 class UserMenu extends React.Component {
     state = {
@@ -21,6 +22,14 @@ class UserMenu extends React.Component {
     };
 
     handleLogOut = () => {
+        // CallApi.delete('/authentication/session', {
+        //     body: {
+        //         session_id: this.props.session_id
+        //     },
+        //     params: {
+        //         session_id: 1
+        //     }
+        // })
         fetchApi(`${API_URL}/authentication/session?api_key=${API_KEY_3}`, {
             method: 'DELETE',
             mode: 'cors',
@@ -56,7 +65,10 @@ class UserMenu extends React.Component {
                     />
                 </DropdownToggle>
                 <DropdownMenu rigth>
-                    <DropdownItem onClick={this.handleLogOut}>Log out</DropdownItem>
+                    <DropdownItem>
+                        <Link to="/account/favorites">Избранные</Link>
+                    </DropdownItem>
+                    <DropdownItem onClick={this.handleLogOut}>Выход</DropdownItem>
                 </DropdownMenu>
             </Dropdown>
         )

@@ -15,3 +15,7 @@ h3{
 input.invalid{
   border-color: $error;
 }
+.card-img--height {
+  max-height: 161.84px;
+  object-fit: cover;
+}

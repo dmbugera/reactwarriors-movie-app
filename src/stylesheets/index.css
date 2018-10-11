@@ -9,3 +9,7 @@ h3 {
 
 input.invalid {
   border-color: #dc3545; }
+
+.card-img--height {
+  max-height: 161.84px;
+  object-fit: cover; }

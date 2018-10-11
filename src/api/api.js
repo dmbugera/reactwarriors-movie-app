@@ -30,6 +30,9 @@ export const fetchApi = (url, options = {}) => {
 };
 
 export default class CallAPI {
+    // options = {
+    //     params: 2
+    // }
     static get (url, options = {}) { //??? static
         const { params = {} } = options;
         const queryStringParams = {
@@ -72,16 +75,17 @@ export default class CallAPI {
     }
     // static delete(url, options = {}){
     //     const {params = {}, body ={}} = options;
-    //
-    //     return fetchApi(`${API_URL}/authentication/session?api_key=${API_KEY_3}`, {
+    //     const queryStringParams = {
+    //     api_key: API_KEY_3,
+    // ...params
+    // };
+    //     return fetchApi(`${API_URL}/authentication/session?${queryString.stringify(queryStringParams}`, {
     //         method: 'DELETE',
     //         mode: 'cors',
     //         headers: {
     //             'Content-type': 'application/json'
     //         },
-    //         body: JSON.stringify({
-    //             session_id: this.props.session_id
-    //         })
+    //         body: JSON.stringify(body)
     //     })
     // }
 }

@@ -1,13 +1,15 @@
 import React from 'react'
-import {AppContext} from '../App'
-
+//import App from '../App'
+import {AppContext} from "../App"
+//App.AppContext
 export default Component => class AppContextHOC extends React.Component {
     render() {
         return (
             <AppContext.Consumer>
-                {(context) => <Component
+                {(value) => <Component
                         {...this.props} //???
-                        {...context}
+                       // update={value.updateUser}
+                        {...value}
                     />}
             </AppContext.Consumer>
         )

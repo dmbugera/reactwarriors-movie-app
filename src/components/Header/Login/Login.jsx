@@ -1,6 +1,8 @@
 import React from "react";
 import { Modal, ModalBody } from 'reactstrap';
 import LoginForm from './LoginForm'
+import AppContextHOC from '../../HOC/AppContextHOC'
+
 
 
 
@@ -8,7 +10,7 @@ import LoginForm from './LoginForm'
 // `${API_URL}/authentication/token/validate_with_login?api_key=${API_KEY_3}`
 // `https://api.themoviedb.org/3/authentication/session/new?api_key=${API_KEY_3}`
 
-export default class Login extends React.Component {
+ class Login extends React.Component {
 
     constructor (){
         super();
@@ -24,6 +26,13 @@ export default class Login extends React.Component {
         }))
     };
 
+    componentDidMount(){
+        if(!this.props.session_id){
+            this.setState ({
+                showModal: true
+            })
+        }
+    }
 
     render() {
         return (
@@ -38,6 +47,7 @@ export default class Login extends React.Component {
                 <Modal isOpen={this.state.showModal} toggle={this.toggleModal}>
                     <ModalBody>
                         <LoginForm
+                            show={true}
                         />
                     </ModalBody>
                 </Modal>
@@ -45,3 +55,5 @@ export default class Login extends React.Component {
         );
     }
 }
+
+export default AppContextHOC(Login)
