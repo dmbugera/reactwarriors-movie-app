@@ -22,9 +22,9 @@ export const fetchApi = (url, options = {}) => {
                 resolve(data);
             })
             .catch(response => {
-                response.json().then(error => {
-                    reject(error);
-                });
+                // response.json().then(error => {
+                //     reject(error);
+                // });
             });
     });
 };
