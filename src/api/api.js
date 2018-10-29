@@ -21,11 +21,11 @@ export const fetchApi = (url, options = {}) => {
             .then(data => {
                 resolve(data);
             })
-            .catch(response => {
-                response.json().then(error => {
-                    reject(error);
-                });
-            });
+            // .catch(response => {
+            //     response.json().then(error => {
+            //         reject(error);
+            //     });
+            // });
     });
 };
 
@@ -49,13 +49,8 @@ export default class CallAPI {
 
         // url = '/discover/movie'
         // params = {}
-        return fetchApi(`${API_URL}${url}?${queryString.stringify(queryStringParams)}`,
-            {
-            mode: "cors",
-            headers: {
-                "Content-type": "application/json"
-            }
-        })
+        return fetchApi(`${API_URL}${url}?${queryString.stringify(queryStringParams)}`
+        )
     }
     static post(url, options = {}){
         const {params = {}, body ={}} = options;

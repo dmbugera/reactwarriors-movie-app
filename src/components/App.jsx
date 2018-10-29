@@ -24,7 +24,7 @@ export default class App extends React.Component {
         this.state = {
             user: null,
             session_id: cookies.get('session_id'),
-            isAuth: false
+            isAuth: true
         }
 
         this.baseState = this.state;
@@ -109,10 +109,9 @@ export default class App extends React.Component {
 
 
     render() {
-        // console.log(this.state.filters.with_genres);
         const {user, session_id, isAuth} =this.state;
         console.log(session_id, isAuth)
-        return (session_id && isAuth) || !session_id  ? (
+        return isAuth || !session_id  ? (
 
         <BrowserRouter>
         <AppContext.Provider value={{
