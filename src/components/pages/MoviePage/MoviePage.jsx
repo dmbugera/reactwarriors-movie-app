@@ -9,8 +9,8 @@ export default class MoviePage extends Component {
             movie: null
         };
     }
-    
-    //tut state 
+
+    //tut state
     componentDidMount (){
         console.log(this.props.match.params.id )
 
